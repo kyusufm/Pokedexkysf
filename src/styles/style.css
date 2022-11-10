@@ -1,0 +1,17 @@
+.pokemon-types {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .pokemon-type {
+    flex: none;
+    font-size: var(--font-size-2xs);
+    line-height: var(--line-height-none);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-1) var(--spacing-2);
+  }
+  
+  .pokemon-type:not(:last-child) {
+    margin-right: var(--spacing-1);
+  }
+  

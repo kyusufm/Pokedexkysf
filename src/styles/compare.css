@@ -1,0 +1,28 @@
+.compare-panel {
+    position: sticky;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    left: 0;
+    bottom: var(--spacing-4);
+    background-color: var(--color-white);
+    z-index: 5;
+    padding: var(--spacing-2) var(--spacing-6);
+    border-radius: var(--border-radius-xl);
+    margin: 0 var(--spacing-8);
+    -webkit-box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.25);
+    box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.25);
+  }
+  
+  .compare-panel-thumbs {
+    flex: 1 1 0%;
+    display: flex;
+  }
+  
+  .compare-panel-thumbs > * {
+    width: var(--spacing-16);
+    height: var(--spacing-16);
+    margin-right: var(--spacing-2);
+  }
+  
