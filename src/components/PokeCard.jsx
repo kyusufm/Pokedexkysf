@@ -9,7 +9,7 @@ const PokeCard = ({pokemon,loading}) => {
                 pokemon.map((item)=> {
                     return (
                         <>
-                            <li className="grid-item">
+                            <li className="grid-item" key={item.id}>
                                 <a href={'#/pokemon/'+item.name}>
                                     <article className={'pokemon-box bg-light bg-light--'+item.types[0].type.name}>
                                     <img className="pokemon-box__img"
@@ -37,24 +37,6 @@ const PokeCard = ({pokemon,loading}) => {
                 })
             }
 
-            {/* <li className="grid-item">
-                <a href="#/pokemon/{bulbasaur}">
-                    <article className="pokemon-box bg-light bg-light--grass">
-                        <img className="pokemon-box__img"
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-                            alt="bulbasaur" loading="lazy" width="82px" height="82px" />
-                        <p className="pokemon-box__number">#001</p>
-                        <h2 className="pokemon-box__name">bulbasaur</h2>
-                        <figure className="pokemon-box__types">
-                            <figcaption className="visually-hidden">Types</figcaption>
-                            <ul className="pokemon-types">
-                                <li className="pokemon-type bg bg--grass">grass</li>
-                                <li className="pokemon-type bg bg--poison">poison</li>
-                            </ul>
-                        </figure>
-                    </article>
-                </a>
-            </li> */}
         </>
     )
 }
