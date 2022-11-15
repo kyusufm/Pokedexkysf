@@ -5,7 +5,6 @@ const PokeCard = ({pokemon,loading}) => {
     return (
         <>
             {
-                loading ? <h1>Loading...</h1> : 
                 pokemon.map((item)=> {
                     return (
                         <>

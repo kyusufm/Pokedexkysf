@@ -17,11 +17,11 @@ function App() {
         <div id="root">
             <Header/>
             <main className="page">
-                <h1 className="page-title">Pokédex <span>(905)</span></h1>
+                <h1 className="page-title">Pokédex <span>({PokeList.length})</span></h1>
 
                 <PokeList/>
 
-                <ComparePane/>
+                {/* <ComparePane/> */}
             </main>
             {/* <PokeInfo/> */}
         </div>

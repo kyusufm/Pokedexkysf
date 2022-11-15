@@ -8,9 +8,10 @@ import {useState, useEffect} from "react";
 const PokeList = () => {
     const [pokeData, setPokeData] =useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/');
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
     const [noData, setNoData] = useState(false);
 
+    console.log(pokeData);
     window.onscroll = () => {
         if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
           if(!noData) {
@@ -18,13 +19,13 @@ const PokeList = () => {
           }
         }
       }
-
     const pokemonList = async()=>{
-        //setLoading(true)
+        setLoading(true)
         const res = await axios.get(url)
         getPokemon(res.data.results)    
         setLoading(false)
         setUrl(res.data.next)
+        console.log(url);
     }
 
     const getPokemon = async(res)=>{
@@ -41,8 +42,7 @@ const PokeList = () => {
 
     useEffect(()=>{
         pokemonList();
-    })
-
+    },[])
 
     return (
         <>
