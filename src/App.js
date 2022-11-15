@@ -1,8 +1,8 @@
 import React from "react";
 import PokeList from './components/PokeList';
 import Header from './components/Header';
-import ComparePane from './components/ComparePane';
-import PokeInfo from './components/PokeInfo';
+// import ComparePane from './components/ComparePane';
+// import PokeInfo from './components/PokeInfo';
 
 import './styles/reset.css';
 import './styles/App.css';
