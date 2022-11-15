@@ -1,6 +1,6 @@
 import React from 'react';
-
-const PokeInfo = () =>{
+ 
+const PokeInfo = (data) =>{
     return (
         <>
         <main class="page-detail bg-light bg-light--grass">

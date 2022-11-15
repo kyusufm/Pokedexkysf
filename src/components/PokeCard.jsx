@@ -1,7 +1,7 @@
 import React from "react";
+import PokeInfo from "./PokeInfo";
 
 const PokeCard = ({pokemon,loading}) => {
-    console.log(pokemon);
     return (
         <>
             {
@@ -9,13 +9,13 @@ const PokeCard = ({pokemon,loading}) => {
                 pokemon.map((item)=> {
                     return (
                         <>
-                            <li className="grid-item" key={item.id}>
+                            <li className="grid-item"  onClick={()=>PokeInfo(item)}>
                                 <a href={'#/pokemon/'+item.name}>
                                     <article className={'pokemon-box bg-light bg-light--'+item.types[0].type.name}>
                                     <img className="pokemon-box__img"
                                         src={item.sprites.other["official-artwork"].front_default}
                                         alt={item.name} loading="lazy" width="82px" height="82px" />
-                                    <p className="pokemon-box__number">#{item.id}</p>
+                                    <p className="pokemon-box__number">#{item.id.toString()}</p>
                                     <h2 className="pokemon-box__name">{item.name}</h2>
                                     <figure className="pokemon-box__types">
                                         <figcaption className="visually-hidden">Types</figcaption>

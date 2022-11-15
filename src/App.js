@@ -1,5 +1,5 @@
 import React from "react";
-import Main from './components/Main';
+import PokeList from './components/PokeList';
 import Header from './components/Header';
 import ComparePane from './components/ComparePane';
 import PokeInfo from './components/PokeInfo';
@@ -19,7 +19,7 @@ function App() {
             <main className="page">
                 <h1 className="page-title">Pokédex <span>(905)</span></h1>
 
-                <Main/>
+                <PokeList/>
 
                 <ComparePane/>
             </main>
