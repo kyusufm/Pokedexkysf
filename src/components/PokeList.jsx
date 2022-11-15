@@ -14,11 +14,11 @@ const PokeList = () => {
     console.log(pokeData);
     window.onscroll = () => {
         if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-          if(!noData) {
-            pokemonList();
-          }
+            if(!noData) {
+                pokemonList();
+            }
         }
-      }
+    }
     const pokemonList = async()=>{
         setLoading(true)
         const res = await axios.get(url)
@@ -26,6 +26,7 @@ const PokeList = () => {
         setLoading(false)
         setUrl(res.data.next)
         console.log(url);
+        console.log("next:"+res.data.next)
     }
 
     const getPokemon = async(res)=>{
@@ -49,7 +50,7 @@ const PokeList = () => {
         <div className="page-content">
             <ul className="grid">
                 
-                <PokeCard pokemon={pokeData} loading={loading}/>
+                <PokeCard pokemon={pokeData} loading={loading} key={pokeData.key}  />
                 {loading ?  <div className="text-center">loading data ...</div> : "" }
                 {noData ? <div className="text-center">no data anymore ...</div> : "" }  
             </ul>
