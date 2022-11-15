@@ -24,9 +24,14 @@ const PokeList = () => {
         const res = await axios.get(url)
         getPokemon(res.data.results)    
         setLoading(false)
-        setUrl(res.data.next)
-        console.log(url);
-        console.log("next:"+res.data.next)
+
+        if(res.data.next === ""){
+            setNoData(true)
+        }else{
+            setUrl(res.data.next)
+        }
+        
+
     }
 
     const getPokemon = async(res)=>{
@@ -43,6 +48,7 @@ const PokeList = () => {
 
     useEffect(()=>{
         pokemonList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return (
