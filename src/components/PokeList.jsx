@@ -11,14 +11,7 @@ const PokeList = () => {
     const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
     const [noData, setNoData] = useState(false);
 
-    console.log(pokeData);
-    window.onscroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-            if(!noData) {
-                pokemonList();
-            }
-        }
-    }
+    
     const pokemonList = async()=>{
         setLoading(true)
         const res = await axios.get(url)
@@ -46,10 +39,25 @@ const PokeList = () => {
         })
     }
 
+    console.log(pokeData);
+
     useEffect(()=>{
         pokemonList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    window.onscroll = () => {
+        const scrollTop = document.documentElement.scrollTop
+        const scrollHeight = document.documentElement.scrollHeight
+        const clientHeight = document.documentElement.clientHeight
+ 
+        if (scrollTop + clientHeight >= scrollHeight) {
+        //if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
+            if(!noData) {
+                pokemonList();
+            }
+        }
+    }
 
     return (
         <>
