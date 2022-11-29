@@ -12,7 +12,6 @@ function PokeList (props) {
     const [noData, setNoData] = useState(false);
     const [totalPokemon, setTotalPokemon] = useState([])
     const [showFilter, setShowFilter] = useState(false);
-    const [query, setQuery] = useState([]);
 
     const [displayCompare, setDisplayCompare] = useState(false)
 
@@ -53,7 +52,6 @@ function PokeList (props) {
 
     const filteredPokemon = (event) => {
         let query = {"types":"grass", "generation":[1,2,3]}
-        let value = "bulbasaur";
         let result = [];
 
         result = pokeData.filter(
