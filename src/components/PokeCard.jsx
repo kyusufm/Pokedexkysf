@@ -4,7 +4,7 @@ import {useState} from "react"
 
 function PokeCard ({pokemon,checkbox}){
 
-    const [thisChecked, setThisChecked] = useState([])
+    const [thisChecked] = useState([])
     
     return (
     <>
