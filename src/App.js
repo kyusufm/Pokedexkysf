@@ -3,7 +3,6 @@ import PokeList from './components/PokeList';
 import PokeInfo from './components/PokeInfo';
 import PokeCompare from './components/PokeCompare';
 import {Route, Routes} from "react-router-dom";
-import {useState} from "react"
 // import Header from './components/Header';
 // import ComparePane from './components/ComparePane';
 

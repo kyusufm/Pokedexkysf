@@ -12,6 +12,7 @@ function PokeList (props) {
     const [noData, setNoData] = useState(false);
     const [totalPokemon, setTotalPokemon] = useState([])
     const [showFilter, setShowFilter] = useState(false);
+    // const [query, setQuery] = useState([]);
 
     const [displayCompare, setDisplayCompare] = useState(false)
 

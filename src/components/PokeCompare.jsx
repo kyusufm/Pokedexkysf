@@ -24,12 +24,12 @@ const PokeInfo = () => {
             const response = await axios.get(pokeApi)
             setPokemonOne(response.data)
             setDetailUrl(response.data.species.url)
-            getPokemonDetail(response.data.species.url)
+            getPokemonDetail(detailUrl)
 
             const res = await axios.get(pokeApiTwo)
             setPokemonTwo(res.data)
             setDetailUrlTwo(res.data.species.url)
-            getPokemonTwoDetail(res.data.species.url)
+            getPokemonTwoDetail(detailUrlTwo)
         }
 
         const getPokemonDetail = async (url) => {
@@ -43,12 +43,12 @@ const PokeInfo = () => {
         }
 
         getPokemon();
-    }, [detailUrl,pokeApi, pokeApiTwo]);
+    }, [detailUrl,detailUrlTwo,pokeApi, pokeApiTwo]);
     
 return (
 <>
     {
-    pokemonOne.name && detail && pokemonTwo.name
+    pokemonOne.name && detail && pokemonTwo.name && detailTwo
     ?(
         <>
     <header className="header ">
