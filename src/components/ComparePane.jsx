@@ -1,19 +1,26 @@
 import React from "react";
 import {Link} from "react-router-dom"
 
-const ComparePane = ({pokemonOne,pokemonTwo}) => {
+const ComparePane = (props) => {
     return (
         <>
             <div className="compare-panel" style={{transition: "all .2s",}}>
                 <ul className="compare-panel-thumbs">
-                    <li>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonOne.id}.png`} alt={pokemonOne.name} loading="lazy" />
-                    </li>
-                    <li>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonTwo.id}.png`} alt={pokemonTwo.name}  loading="lazy" />
-                    </li>
+                    {props &&
+                    <>
+                        <li>
+                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokeCompare[0].id}.png`} alt={props.pokeCompare[0].name} loading="lazy" />
+                        </li>
+                        <li>
+                            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokeCompare[0].id}.png`} alt={props.pokeCompare[0].name}  loading="lazy" />
+                        </li>
+                    </>
+                    }
+                    
                 </ul>
-                <Link className="button button-cta  " to={`/compare-pokemon/${pokemonOne.name}/${pokemonTwo.name}`}>
+                {props.pokeCompare.length >1 &&
+                    <>
+                <Link className="button button-cta  " to={`/compare-pokemon/${props.pokeCompare[0].name}/${props.pokeCompare[1].name}`}>
                     <span>Compare</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -22,6 +29,8 @@ const ComparePane = ({pokemonOne,pokemonTwo}) => {
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </Link>
+                </>
+                }
             </div>
         </>
     )

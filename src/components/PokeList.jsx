@@ -16,14 +16,17 @@ function PokeList (props) {
 
     const [displayCompare, setDisplayCompare] = useState(false)
 
-    const [pokeOne, setPokeOne] = useState({id:1,name:"bulbasaur"});
-    const [pokeTwo, setPokeTwo] = useState({id:4, name:"charmander"});
+    //const [pokeOne, setPokeOne] = useState({id:1,name:"bulbasaur"});
+    const [pokeComp, setPokeComp] = useState({id:1,name:"bulbasaur"},{id:4, name:"charmander"});
+
+    
 
     const pokemonList = async(query)=>{
         setLoading(true)
         const res = await axios.get(url)
         getPokemon(res.data.results)    
         setLoading(false)
+
         if(res.data.next === ""){
             setNoData(true)
         }else{
@@ -32,22 +35,39 @@ function PokeList (props) {
         }
     }
 
-    const filteredPokemon = async()=>{
-        setLoading(true)
-        console.log ("pokemon filtered")
-    }
-
     const getPokemon = async(res)=>{
         res.map(async (item)=>{
             const result = await axios.get(item.url)
             setPokeData(state =>{
+
                 state = [...state, result.data];
                 state.sort((a,b)=>a.id>b.id?1:-1)
+
+
+                
                 return state;
             })
             
         })
     }
+
+    const filteredPokemon = (event) => {
+        let query = {"types":"grass", "generation":[1,2,3]}
+        let value = "bulbasaur";
+        let result = [];
+
+        result = pokeData.filter(
+            
+            pokeData => {
+                return pokeData.types.includes(query.types) !== -1
+            }
+        )
+        
+
+        console.log(result)
+        setPokeData(result);
+        }
+
 
     const handleCompare = () => {
         //display checkbox on every card.
@@ -56,6 +76,9 @@ function PokeList (props) {
         }else{
             setDisplayCompare(true);
         }
+        setPokeComp (
+            [{id:4, name:"charmander"},{id:1, name:"bulbasaur"}]
+        )
         
     }
 
@@ -84,6 +107,8 @@ function PokeList (props) {
             }
         }
     }
+
+    //console.log(pokeData)
 
     return (
         <>
@@ -170,7 +195,7 @@ function PokeList (props) {
             </section>
             
             {displayCompare && 
-            <ComparePane pokemonOne={pokeOne} pokemonTwo={pokeTwo}/>
+            <ComparePane pokeCompare={pokeComp}/>
             }
         </main>
         </>
